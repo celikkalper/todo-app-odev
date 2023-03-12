@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import TodoList from "./List/TodoList";
@@ -6,38 +6,26 @@ import TodoList from "./List/TodoList";
 import "./styles.css";
 
 const Todo = () => {
-  const [todoList, setTodoList] = useState([
+  const [tasks, setTasks] = useState([
     {
-      done: true,
+      id: 1,
       text: "Taste JavaScript",
+      isDone: true,
     },
     {
+      id: 2,
       text: "Code furiously",
-      done: true,
+      isDone: false,
     },
-    {
-      text: "Promote Mavo",
-      done: false,
-    },
-    {
-      text: "Give talks",
-      done: false,
-    },
-    {
-      text: "Write tutorials",
-      done: true,
-    },
-    {
-      text: "Have a life!",
-      done: false,
-    },
+    { id: 3, text: "Promote Mavo", isDone: false },
+    { id: 4, text: "Give talks", isDone: true },
   ]);
 
   return (
     <section className="todoapp">
-      <Header addTodo={setTodoList} todoList={todoList} />
-      <TodoList addTodo={setTodoList} todoList={todoList} />
-      <Footer />
+      <Header setTodo={setTasks} todoList={tasks} />
+      <TodoList setTodo={setTasks} todoList={tasks} />
+      <Footer setTodo={setTasks} todoList={tasks} />
     </section>
   );
 };

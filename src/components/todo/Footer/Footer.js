@@ -1,6 +1,6 @@
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ setTodo, todoList }) => {
   return (
     <footer className="footer">
       <span className="todo-count">

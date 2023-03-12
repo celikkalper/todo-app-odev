@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+const initialValue = { id: "", text: "", done: false };
 
-const initialValue = { text: "", done: false };
-
-const Header = ({ addTodo, todoList }) => {
+const Header = ({ setTodo, todoList }) => {
   const [newTodo, setNewTodo] = useState(initialValue);
   const onChange = (e) => {
     e.preventDefault();
-    setNewTodo({ ...newTodo, text: e.target.value });
+    setNewTodo({ ...newTodo, id: uuidv4(), text: e.target.value });
   };
 
   const onSubmited = (e) => {
     e.preventDefault();
 
-    addTodo([...todoList, newTodo]);
+    setTodo([...todoList, newTodo]);
     setNewTodo(initialValue);
-    // console.log(e.code);
   };
 
-  // useEffect(() => {}, []);
   return (
     <header className="header">
       <h1>todos</h1>
